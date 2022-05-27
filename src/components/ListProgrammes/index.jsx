@@ -22,15 +22,17 @@ export const ListProgrammes = ({ programme }) => {
           <div>
             <img src={programme.custom_info.Graficos.URL} alt={programme.title} />
             <ShowingNow showingNow={showingNow}>{showingNow ? 'Ao vivo' : hour}</ShowingNow>
-            <div>{programme.title ? programme.title : programme.program.name}</div>
+            <h2>{programme.title ? programme.title : programme.program.name}</h2>
           </div>
           <Arrow src={arrowImage} />
         </Information>
       </div>
       <MoreInfo expand={expand}>
         <img src={programme.custom_info.Graficos.ImagemURL} alt={programme.title} />
-        <div>{programme.description}</div>
-        <div>Classe: {programme.custom_info.Classe}</div>
+        <div>
+          <div>{programme.description}</div>
+          <div>Classe: {programme.custom_info.Classe}</div>
+        </div>
       </MoreInfo>
     </CardProgrammeContainer>
   );
