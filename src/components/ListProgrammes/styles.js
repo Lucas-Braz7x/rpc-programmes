@@ -47,11 +47,13 @@ export const Information = styled.div`
 
   @media (max-width: 500px) {
     > div {
+      width: 220px;
+
       > img {
         display: none;
       }
       > div {
-        width: 50%;
+        width: 40%;
         min-width: 110px;
         height: 20px;
         text-overflow: ellipsis;
