@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const TodayProgrammes = styled.div`
-  min-height: 125px;
+  position: relative;
+  min-height: 100vh;
+  height: auto;
   width: 100%;
   padding: 20px 0;
   background: #f9f8f8;
@@ -46,4 +48,19 @@ export const ArrowLeft = styled.img`
 
 export const ArrowRight = styled(ArrowLeft)`
   transform: rotate(270deg);
+`;
+
+export const Loading = styled.div`
+  position: absolute;
+  top: 100px;
+  background: rgba(0, 0, 0, 0.3);
+  width: 100%;
+  height: 100%;
+
+  color: #ffffff;
+
+  div {
+    display: flex;
+    justify-content: center;
+  }
 `;

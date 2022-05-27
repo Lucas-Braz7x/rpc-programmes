@@ -39,6 +39,12 @@ export const Information = styled.div`
     gap: 30px;
     align-items: center;
   }
+
+  h2 {
+    font-weight: 400;
+    font-size: 16px;
+  }
+
   min-height: 66px;
   display: flex;
   align-items: center;
@@ -52,7 +58,7 @@ export const Information = styled.div`
       > img {
         display: none;
       }
-      > div {
+      > h2 {
         width: 40%;
         min-width: 110px;
         height: 20px;
@@ -78,6 +84,12 @@ export const MoreInfo = styled.div`
     min-width: 280px;
     height: 182px;
     border-radius: 3px;
+  }
+
+  > div {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 
   @media (max-width: 900px) {

@@ -5,7 +5,7 @@ import { useAxios } from '../../hooks/useAxios';
 import { api } from '../../services/api';
 import { handleDateFormatted } from '../../tools';
 import { ListProgrammes } from '../ListProgrammes';
-import { ArrowLeft, ArrowRight, TodayProgrammes } from './styles';
+import { ArrowLeft, ArrowRight, Loading, TodayProgrammes } from './styles';
 import arrow from '../../assets/image/select-image.svg';
 
 export const Programmes = () => {
@@ -13,6 +13,7 @@ export const Programmes = () => {
   const [date, setDate] = useState('');
   const [programmes, setProgrammes] = useState([]);
   const [update, setUpdate] = useState(false);
+  const [loadingRequest, setLoadingRequest] = useState(false);
 
   useEffect(() => {
     setProgrammes(data);
@@ -24,6 +25,7 @@ export const Programmes = () => {
   }, [update]);
 
   const handleChangeDate = async (operation) => {
+    setLoadingRequest(true);
     let dataAnterior;
     if (operation == 'ADD') {
       dataAnterior = dayjs(programmes.date).add(1, 'day').format('YYYY-MM-DD');
@@ -33,6 +35,7 @@ export const Programmes = () => {
     const { data } = await api.get(`/programmes/${dataAnterior}`);
     setProgrammes(data.data);
     setUpdate(!update);
+    setLoadingRequest(false);
   };
 
   return (
@@ -46,6 +49,7 @@ export const Programmes = () => {
 
       <input type="search" />
       {loading && <p>Carregando...</p>}
+      {loadingRequest && <Loading><div><p>Carregando...</p></div></Loading>}
       {programmes.entries.length > 0 &&
         programmes.entries.map((programme, index) => <ListProgrammes programme={programme} key={index} />)}
     </TodayProgrammes>
